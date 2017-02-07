@@ -37,28 +37,28 @@ public class CustomerRepository {
 		cust1.setDob(dataTypeFactory.newXMLGregorianCalendar(cal));
 
 		Customer cust2 = new Customer();
-		cust1.setNino("AB123456B");
-		cust1.setFirstName("Faran");
-		cust1.setLastName("Kardame");
+		cust2.setNino("AB123456B");
+		cust2.setFirstName("Faran");
+		cust2.setLastName("Kardame");
 		cal.setTime(dob2);
-		cust1.setDob(dataTypeFactory.newXMLGregorianCalendar(cal));
+		cust2.setDob(dataTypeFactory.newXMLGregorianCalendar(cal));
 
 		Customer cust3 = new Customer();
-		cust1.setNino("BB223344C");
-		cust1.setFirstName("Meera");
-		cust1.setLastName("Varma");
+		cust3.setNino("BB223344C");
+		cust3.setFirstName("Meera");
+		cust3.setLastName("Varma");
 		cal.setTime(dob3);
-		cust1.setDob(dataTypeFactory.newXMLGregorianCalendar(cal));
+		cust3.setDob(dataTypeFactory.newXMLGregorianCalendar(cal));
 
-		this.customers.add(cust1);
-		this.customers.add(cust2);
-		this.customers.add(cust3);
+		customers.add(cust1);
+		customers.add(cust2);
+		customers.add(cust3);
 	}
 
 	public Customer findCustomer(String nino) {
 		Assert.notNull(nino);
 
-		for (Customer customer : this.customers) {
+		for (Customer customer : customers) {
 			if (customer.getNino().equalsIgnoreCase(nino)) {
 				return customer;
 			}
