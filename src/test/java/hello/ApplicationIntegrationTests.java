@@ -29,30 +29,29 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.ClassUtils;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
-import io.spring.guides.gs_producing_web_service.GetCountryRequest;
+import io.spring.guides.gs_producing_web_service.GetCustomerRequest;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class ApplicationIntegrationTests {
 
-    private Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
+	private Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
 
-    @LocalServerPort
-    private int port = 0;
+	@LocalServerPort
+	private int port = 0;
 
-    @Before
-    public void init() throws Exception {
-        marshaller.setPackagesToScan(ClassUtils.getPackageName(GetCountryRequest.class));
-        marshaller.afterPropertiesSet();
-    }
+	@Before
+	public void init() throws Exception {
+		marshaller.setPackagesToScan(ClassUtils.getPackageName(GetCustomerRequest.class));
+		marshaller.afterPropertiesSet();
+	}
 
-    @Test
-    public void testSendAndReceive() {
-        WebServiceTemplate ws = new WebServiceTemplate(marshaller);
-        GetCountryRequest request = new GetCountryRequest();
-        request.setName("Spain");
+	@Test
+	public void testSendAndReceive() {
+		WebServiceTemplate ws = new WebServiceTemplate(marshaller);
+		GetCustomerRequest request = new GetCustomerRequest();
+		request.setNino("AA111111A");
 
-        assertThat(ws.marshalSendAndReceive("http://localhost:"
-                + port + "/ws", request)).isNotNull();
-    }
+		assertThat(ws.marshalSendAndReceive("http://localhost:" + port + "/ws", request)).isNotNull();
+	}
 }
