@@ -1,4 +1,4 @@
-package hello;
+package com.accenture.sample;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

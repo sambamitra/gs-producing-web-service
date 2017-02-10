@@ -1,4 +1,4 @@
-package hello;
+package com.accenture.sample;
 
 import java.util.Collections;
 import java.util.List;
